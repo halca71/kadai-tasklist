@@ -3,7 +3,7 @@ class TasksController < ApplicationController
   before_action :correct_user, only: [:show, :edit, :update, :destroy]
 
   def index
-    @pagy, @tasks = pagy(Task.order(id: :desc), items: 3)
+    @pagy, @tasks = pagy(current_user.tasks.order(id: :desc), items: 3)
   end
   
   def show
